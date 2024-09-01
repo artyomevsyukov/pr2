@@ -1,0 +1,36 @@
+{
+  "name": "pr2",
+  "version": "1.0.0",
+  "description": "single page app book",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "live-server",
+    "build": "rollup -c --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/artyomevsyukov/pr2.git"
+  },
+  "keywords": [
+    "book"
+  ],
+  "author": "Artyom Evsyukov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/artyomevsyukov/pr2/issues"
+  },
+  "homepage": "https://github.com/artyomevsyukov/pr2#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.9.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "eslint": "^9.9.1",
+    "globals": "^15.9.0",
+    "live-server": "^1.2.2",
+    "rollup": "^4.21.1",
+    "rollup-plugin-import-css": "^3.5.1"
+  },
+  "dependencies": {
+    "on-change": "^5.0.1"
+  }
+}
