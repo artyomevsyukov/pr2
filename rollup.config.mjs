@@ -1,5 +1,5 @@
 import css from "rollup-plugin-import-css";
-import { nodeResolve } from '@rollup/plugin-node-resolve';
+import { nodeResolve } from "@rollup/plugin-node-resolve";
 
 export default {
     input: "src/app.js",
@@ -8,6 +8,5 @@ export default {
         format: "iife",
     },
 
-    plugins: [nodeResolve(),css({output: "bundle.css"})]
+    plugins: [nodeResolve(), css({ output: "bundle.css" })],
 };
-// css({output: { file: "dist/bundle.css"}})
