@@ -1,3 +1,13 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,regular,500,600,700,800);
+
+:root {
+    --color-black: #121212;
+    --color-white: #fafafa;
+}
 body {
-    background-color: burlywood;
+    font-family: "Open Sans", sans-serif;
+    background-color: rgb(145, 140, 133);
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--color-black);
 }
