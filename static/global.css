@@ -4,6 +4,15 @@
     --color-black: #121212;
     --color-white: #fafafa;
 }
+
+#root {
+    font-family: "Open Sans", sans-serif;
+    background-color: rgb(145, 140, 133);
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--color-black);
+}
+
 body {
     font-family: "Open Sans", sans-serif;
     background-color: rgb(145, 140, 133);
