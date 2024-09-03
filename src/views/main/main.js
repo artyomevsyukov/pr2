@@ -1,6 +1,7 @@
 import { AbstractView } from "../../common/view";
 import onChange from "on-change";
 import { Header } from "../../components/header/header";
+import { Search } from "../../components/search/search";
 
 export class MainView extends AbstractView {
     state = {
@@ -15,18 +16,47 @@ export class MainView extends AbstractView {
         this.setTitle("Поиск книг");
         this.appState = appState;
         this.appState = onChange(this.appState, this.appStateHook.bind(this));
+        this.state = onChange(this.state, this.stateHook.bind(this));
     }
     appStateHook(path) {
         if (path === "favorites") {
             console.log(path);
+            console.log(new Search());
         }
-
-        // this.render(); //Реактивность
     }
+    async stateHook(path) {
+        if (path === "searchQuery") {
+            console.log(path);
+            this.state.load = true;
+            const data = await this.loadList(
+                this.state.searchQuery,
+                this.state.offset
+            );
+            console.log(data);
+            this.state.load = false;
+        }
+    }
+    // async loadList(q, offset) {
+    //     const res = await fetch(
+    //         `https://openlibrary.org/search.json?q=${q}&offset=${offset}`
+    //     );
+    //     const data = await res.json();
+    //     console.log(data);
+    //     return data;
+    // }
+    async loadList(q, offset) {
+        const res = await fetch(
+            `https://openlibrary.org/search.json?q=${q}&offset=${offset}`
+        );
+        return res.json();
+    }
+
     render() {
-        const main = document.createElement("div");
-        this.app.append(main);
         this.renderHeader();
+        const main = document.createElement("div");
+        main.append(new Search(this.state).render());
+
+        this.app.append(main);
     }
     renderHeader() {
         const header = new Header(this.appState).render();
