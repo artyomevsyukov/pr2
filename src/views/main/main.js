@@ -20,19 +20,19 @@ export class MainView extends AbstractView {
     }
     appStateHook(path) {
         if (path === "favorites") {
-            console.log(path);
             console.log(new Search());
         }
     }
     async stateHook(path) {
         if (path === "searchQuery") {
-            console.log(path);
             this.state.load = true;
             const data = await this.loadList(
+                // const { docs } = await this.loadList(
                 this.state.searchQuery,
                 this.state.offset
             );
             console.log(data);
+            // console.log(docs);
             this.state.load = false;
         }
     }
