@@ -3,6 +3,7 @@ import onChange from "on-change";
 import { Header } from "../../components/header/header";
 import { Search } from "../../components/search/search";
 import { CardList } from "../../components/card-list/cardList";
+import { Card } from "../../components/card/card";
 
 export class MainView extends AbstractView {
     state = {
@@ -35,12 +36,14 @@ export class MainView extends AbstractView {
                 this.state.offset
             );
             this.state.loading = false;
+            console.log(data);
             this.state.numFound = data.numFound;
             this.state.list = data.docs;
         }
-        if (path === "list" || path === "loading") {
+        if (path === "loading" || path === "list") {
             this.render();
         }
+
         console.log("path: ", path);
     }
 
@@ -55,6 +58,7 @@ export class MainView extends AbstractView {
         const main = document.createElement("div");
         main.append(new Search(this.state).render());
         main.append(new CardList(this.appState, this.state).render());
+        // main.append(new Card(this.appState, this.state).render());
         this.app.innerHTML = "";
         this.app.append(main);
         this.renderHeader();
