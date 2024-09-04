@@ -18,8 +18,8 @@ export class Header extends DivComponent {
                 <a class="header__link" href="#favorites">
                     <img src="/static/favorites.svg" alt="Избранное">
                     Избранное
+                    <div class="header__counter">${this.appState.favorites.length}</div>
                 </a>
-                 <div class="header__counter">${this.appState.favorites.length}</div>
             </div>
         `;
         return this.el;

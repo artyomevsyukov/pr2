@@ -5,7 +5,6 @@ class App {
 
     appState = {
         favorites: [],
-        buy: [],
     };
 
     constructor() {

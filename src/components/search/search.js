@@ -6,6 +6,12 @@ export class Search extends DivComponent {
         super();
         this.state = state;
     }
+
+    search() {
+        const value = this.el.querySelector("input").value;
+        this.state.searchQuery = value;
+    }
+
     render() {
         this.el.classList.add("search");
         this.el.innerHTML = `
@@ -29,18 +35,4 @@ export class Search extends DivComponent {
         });
         return this.el;
     }
-    search() {
-        const value = this.el.querySelector("input").value;
-        this.state.searchQuery = value;
-    }
 }
-
-// async function loadData(q, offset) {
-//     const res = fetch(
-//         `https://openlibrary.org/search.json?q=${q}&offset=${offset}`
-//     );
-//     const data = await res.json;
-//     console.log(data);
-//     return data;
-// }
-// loadData('harry', 0)
