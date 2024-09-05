@@ -15,6 +15,7 @@ export class Card extends DivComponent {
         );
         console.log("this.cardState FILTER: ", this.cardState);
         console.log("this.appState.favorites: ", this.appState.favorites);
+        console.log("this: ", this);
     }
 
     #addToFavorites() {
@@ -22,6 +23,7 @@ export class Card extends DivComponent {
         console.log("this.cardState PUSH: ", this.cardState);
         this.appState.favorites.push(this.cardState);
         console.log("this.appState.favorites: ", this.appState.favorites);
+        console.log("this: ", this);
     }
 
     render() {
