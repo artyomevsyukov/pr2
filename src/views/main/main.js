@@ -3,7 +3,6 @@ import onChange from "on-change";
 import { Header } from "../../components/header/header";
 import { Search } from "../../components/search/search";
 import { CardList } from "../../components/card-list/cardList";
-import { Card } from "../../components/card/card";
 
 export class MainView extends AbstractView {
     state = {
@@ -24,7 +23,8 @@ export class MainView extends AbstractView {
 
     appStateHook(path) {
         if (path === "favorites") {
-            console.log(path);
+            console.log("main clg favorites path: ", path);
+            this.render();
         }
     }
 
@@ -36,7 +36,7 @@ export class MainView extends AbstractView {
                 this.state.offset
             );
             this.state.loading = false;
-            console.log(data);
+            // console.log("main clg data", data);
             this.state.numFound = data.numFound;
             this.state.list = data.docs;
         }
@@ -44,7 +44,7 @@ export class MainView extends AbstractView {
             this.render();
         }
 
-        console.log("path: ", path);
+        console.log("main clg path: ", path);
     }
 
     async loadList(q, offset) {
@@ -56,6 +56,7 @@ export class MainView extends AbstractView {
 
     render() {
         const main = document.createElement("div");
+        main.classList.add("main");
         main.append(new Search(this.state).render());
         main.append(new CardList(this.appState, this.state).render());
         // main.append(new Card(this.appState, this.state).render());

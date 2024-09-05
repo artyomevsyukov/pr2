@@ -1,13 +1,17 @@
+/* .card-list {
+} */
 /* .card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 } */
 
-.car-list__title {
+.card-list__title {
     font-weight: 600;
     font-size: 24px;
     line-height: 133%;
     color: var(--color-black);
 }
-.car-list__load {
+.card-list__load {
     display: flex;
     align-items: center;
     justify-content: center;

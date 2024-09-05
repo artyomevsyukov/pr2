@@ -1,4 +1,5 @@
 import { DivComponent } from "../../common/div-component";
+import "./card.css";
 
 export class Card extends DivComponent {
     constructor(appState, cardState) {
@@ -7,18 +8,36 @@ export class Card extends DivComponent {
         this.cardState = cardState;
     }
 
+    #deleteFromFavorites() {
+        console.log("DELETE");
+        this.appState.favorites = this.appState.favorites.filter(
+            (b) => b.key !== this.cardState.key
+        );
+        console.log("this.cardState FILTER: ", this.cardState);
+        console.log("this.appState.favorites: ", this.appState.favorites);
+    }
+
+    #addToFavorites() {
+        console.log("add");
+        console.log("this.cardState PUSH: ", this.cardState);
+        this.appState.favorites.push(this.cardState);
+        console.log("this.appState.favorites: ", this.appState.favorites);
+    }
+
     render() {
-        const existInFavorites = this.appState.favorites.find((b) => {
-            if (b.key == this.cardState.key) {
-                console.log("Yes");
-            }
-        });
         this.el.classList.add("card");
+
+        const existInFavorites = this.appState.favorites.find(
+            (b) => b.key == this.cardState.key
+        );
+
+        // console.log("card clg this.cardState", this.cardState);
+        // console.log("card clg existInFavorites", existInFavorites);
         this.el.innerHTML = `
         <div class="card__img">
             <img src="https://covers.openlibrary.org/b/olid/${
                 this.cardState.cover_edition_key
-            }-S.jpg" alt="Обложка">
+            }-M.jpg" alt="Обложка">
         </div>  
         <div class="card__info">
             <div class="card__tag">${
@@ -28,7 +47,7 @@ export class Card extends DivComponent {
             <div class="card__author">${
                 this.cardState.author_name
                     ? this.cardState.author_name[0]
-                    : "не заданно"
+                    : "Не заданно"
             }
             </div>
             <div class="card__footer">
@@ -37,16 +56,27 @@ export class Card extends DivComponent {
                     }">
                 ${
                     existInFavorites
-                        ? '<img src="/static/favorites-white.svg" alt="Избранное"/>'
-                        : '<img src="/static/favorites.svg" alt="Избранное"/>'
+                        ? '<img src="/static/favorites.svg" alt="Избранное"/>'
+                        : '<img src="/static/favorites-white.svg" alt="Избранное"/>'
                 }
                     </button>
             </div>
         </div>
-        
-
-
         `;
+
+        if (existInFavorites) {
+            this.el
+                .querySelector("button")
+                .addEventListener(
+                    "click",
+                    this.#deleteFromFavorites.bind(this)
+                );
+        } else {
+            this.el
+                .querySelector("button")
+                .addEventListener("click", this.#addToFavorites.bind(this));
+        }
+
         return this.el;
     }
 }

@@ -21,7 +21,9 @@ export class Search extends DivComponent {
                 type="text" 
                 class="search__input search__input-with-bg-icon"
                 placeholder="Найти книгу или автора...."
-                value=${this.state.searchQuery ? this.state.searchQuery : ""}>
+                value=${
+                    this.state.searchQuery ? this.state.searchQuery : "ffg"
+                }>
         </div>
         <button class="search__btn"><img class="search__icon" src="/static/search-white.svg" alt="Поиск"></button>
         `;
