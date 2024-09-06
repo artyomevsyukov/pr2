@@ -9,21 +9,21 @@ export class Card extends DivComponent {
     }
 
     #deleteFromFavorites() {
-        console.log("DELETE");
         this.appState.favorites = this.appState.favorites.filter(
             (b) => b.key !== this.cardState.key
         );
-        console.log("this.cardState FILTER: ", this.cardState);
-        console.log("this.appState.favorites: ", this.appState.favorites);
-        console.log("this: ", this);
+        // console.log("DELETE");
+        // console.log("this.cardState FILTER: ", this.cardState);
+        // console.log("this.appState.favorites: ", this.appState.favorites);
+        // console.log("this: ", this);
     }
 
     #addToFavorites() {
-        console.log("add");
-        console.log("this.cardState PUSH: ", this.cardState);
         this.appState.favorites.push(this.cardState);
-        console.log("this.appState.favorites: ", this.appState.favorites);
-        console.log("this: ", this);
+        // console.log("add");
+        // console.log("this.cardState PUSH: ", this.cardState);
+        // console.log("this.appState.favorites: ", this.appState.favorites);
+        // console.log("this: ", this);
     }
 
     render() {

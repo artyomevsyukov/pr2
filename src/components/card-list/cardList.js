@@ -15,35 +15,16 @@ export class CardList extends DivComponent {
             return this.el;
         }
         this.el.classList.add("card-list");
-        this.el.innerHTML = `
-            <h1>the lord of the ring</h1>
-        `;
 
-        if (this.parentState.searchQuery) {
-            // console.log("this.parentState: ", this.parentState);
-            // console.log("this.appState: ", this.appState);
-            this.el.innerHTML = `
-            <h1 class="card-list__title">Найдено книг - ${this.parentState.numFound} по запросу ${this.parentState.searchQuery}</h1>`;
-            const cardGrid = document.createElement("div");
-            cardGrid.classList.add("card__grid");
-            this.el.append(cardGrid);
-            // console.log("this.parentState.list", this.parentState.list);
-            // console.log(
-            //     "this.parentState.list (как обычный массив):",
-            //     Array.from(this.parentState.list)
-            // );
+        const cardGrid = document.createElement("div");
+        cardGrid.classList.add("card__grid");
+        this.el.append(cardGrid);
 
-            // Render cards
-            this.parentState.list.forEach((book) => {
-                // console.log("cardList clg book: ", book);
-                cardGrid.append(new Card(this.appState, book).render());
-            });
-            // for (const card of this.parentState.list) {
-            //     this.el.append(new Card(this.appState, card).render());
-            // }
-
-            return this.el;
-        }
+        // Render cards
+        this.parentState.list.forEach((book) => {
+            // console.log("cardList clg book: ", book);
+            cardGrid.append(new Card(this.appState, book).render());
+        });
 
         return this.el;
     }
