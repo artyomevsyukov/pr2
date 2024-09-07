@@ -5,7 +5,24 @@ export class Header extends DivComponent {
     constructor(appState) {
         super();
         this.appState = appState;
+        // window.addEventListener("hashchange", this.updateActiveLink.bind(this));
+        // this.updateActiveLink();
     }
+
+    // updateActiveLink() {
+    //     const links = document.querySelectorAll(".header__link");
+
+    //     const currentHash = window.location.hash || "#";
+    //     links.forEach((link) => {
+    //         if (link.getAttribute("href") === currentHash) {
+    //             link.classList.add("header_active");
+    //         } else {
+    //             link.classList.remove("header_active");
+    //         }
+    //     });
+    //     console.log("currentHash: ", currentHash);
+    // }
+
     render() {
         this.el.classList.add("header");
         this.el.innerHTML = `
